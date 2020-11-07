@@ -73,17 +73,21 @@ Before executing the script, it is necessary to fill some information in
   token](https://www.codewars.com/users/edit):
 
   ```json
-  "codewars": {
-    "email": "user@example.com",
-    "password": "correct horse battery staple",
-    "api_key": "0123456789abcdefghij"
-  }
+  "email": "user@example.com",
+  "password": "correct horse battery staple",
+  "api_key": "0123456789abcdefghij",
   ```
 
 - Root directory wherein the katas will be placed:
 
   ```json
-  "download_folder": "./solutions"
+  "export_dir": "./solutions"
+  ```
+
+- Local timezone to adjust UTC times to for git commits:
+
+  ```json
+  "timezone": "Europe/Berlin"
   ```
 
 - Number of attempts to reload the page while scrolling down. Each

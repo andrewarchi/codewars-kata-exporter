@@ -1,9 +1,8 @@
 {
-  "codewars": {
-    "email": "",
-    "password": "",
-    "api_key": ""
-  },
-  "download_folder": "./solutions",
+  "email": "",
+  "password": "",
+  "api_key": "",
+  "export_dir": "./solutions",
+  "timezone": "",
   "reloads_in_browser": 10
 }

@@ -9,9 +9,9 @@ class Kata:
         codes = self.soup.find_all('div', {'class': 'markdown'})
         return [''.join(code.findAll(text=True)) for code in codes]
 
-    def languages(self):
+    def language_names(self):
         languages = self.soup.find_all('h6')
-        return [language.text.rstrip(':').lower() for language in languages]
+        return [language.text.rstrip(':') for language in languages]
 
     def language_ids(self):
         languages = self.soup.find_all('code')
@@ -25,9 +25,9 @@ class Kata:
         difficulty = self.soup.find('div', {'class': 'item-title'}).find('span').text
         return difficulty.replace(' ', '-').lower()
 
-    def title(self):
-        title = self.soup.find('div', {'class': 'item-title'}).find('a').text
-        return title.replace(' ', '-').lower()
+    def name(self):
+        name = self.soup.find('div', {'class': 'item-title'}).find('a').text
+        return name
 
     def kata_id(self):
         href = self.soup.find('div', {'class': 'item-title'}).find('a')['href']

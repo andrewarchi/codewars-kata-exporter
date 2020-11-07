@@ -1,6 +1,7 @@
 # Export
 solutions/
 source.html
+git_commit.bash
 
 # ChromeDriver for Selenium
 chromedriver

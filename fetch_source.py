@@ -15,8 +15,8 @@ driver.get('https://www.codewars.com/users/sign_in')
 usernameElem = driver.find_element_by_id('user_email')
 passwordElem = driver.find_element_by_id('user_password')
 
-usernameElem.send_keys(setup['codewars']['email'])
-passwordElem.send_keys(setup['codewars']['password'])
+usernameElem.send_keys(setup['email'])
+passwordElem.send_keys(setup['password'])
 
 driver.find_element_by_xpath('//button[1]').click()
 driver.find_element_by_xpath('//div[@class="profile-pic mr-0"]/img[1]').click()
