@@ -86,21 +86,6 @@ Before executing the script, it is necessary to fill some information in
   "download_folder": "./solutions"
   ```
 
-- File extensions to use for each language. List of languages supported
-  by Codewars updated Nov 2020. Extensions sourced from
-  [Github Linguist](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)).
-
-  ```json
-  "file_extensions": {
-    "agda": ".agda",
-    "bf": ".bf",
-    "c": ".c",
-    ...
-    "typescript": ".ts",
-    "vb": ".vb"
-  },
-  ```
-
 - Number of attempts to reload the page while scrolling down. Each
   attempt takes 2s, which is the time I deemed enough to load more
   katas. This is 'hacky' part I mentioned. Feel free to fine-tune this
