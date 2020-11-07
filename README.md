@@ -99,7 +99,7 @@ Now run the script responsible for fetching the HTML:
 
 `$ python fetch_source.py`
 
-A chrome window will open and then will start to automatically:
+A Chrome window will open and then will start to automatically:
 
 1. log into your account;
 2. go to your solutions page;
