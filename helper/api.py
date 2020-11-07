@@ -2,7 +2,7 @@ import json
 import requests
 
 
-class CodeWarsApi:
+class CodeWarsAPI:
     def __init__(self, token):
         self.token = token
 

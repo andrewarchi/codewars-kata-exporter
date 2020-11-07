@@ -16,6 +16,11 @@ class Kata:
         return [language.text.rstrip(':').lower() for language in languages]
 
     @property
+    def language_ids(self):
+        languages = self.soup.find_all('code')
+        return [language['data-language'] for language in languages]
+
+    @property
     def difficulty(self):
         difficulty = self.soup.find('div', {'class': 'item-title'}).find('span').text
         return difficulty.replace(' ', '-').lower()
