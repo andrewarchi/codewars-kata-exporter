@@ -42,7 +42,8 @@ for i, kata in enumerate(katas):
             fout.write(description)
 
         relative_dir = os.path.join(difficulty, slug, language_id)
-        commits.append((time, name, language_name, url, relative_dir))
+        language_url = url + "/" + language_id
+        commits.append((time, name, language_name, language_url, relative_dir))
 print()
 
 with open('./git_commit.bash', 'w') as fout:
