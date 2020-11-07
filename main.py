@@ -41,7 +41,7 @@ for i, kata in enumerate(katas):
         with open(os.path.join(file_dir, 'README.md'), 'w') as fout:
             fout.write(description)
 
-        relative_dir = os.path.join('$BASE', difficulty, slug, language_id)
+        relative_dir = os.path.join(difficulty, slug, language_id)
         commits.append((time, name, language_name, url, relative_dir))
 print()
 
@@ -53,7 +53,7 @@ with open('./git_commit.bash', 'w') as fout:
         if tz_name != '':
             utc = datetime.strptime(time, '%Y-%m-%dT%H:%M:%S.%f%z')
             time = utc.astimezone(timezone(tz_name)).strftime('%Y-%m-%dT%H:%M:%S%z')
-        fout.write(("git add \"{}\" && " +
+        fout.write(("git -C \"$BASE\" add '{}' && " +
             "GIT_AUTHOR_DATE='{}' GIT_COMMITTER_DATE='{}' " +
-            "git commit -m 'Solve \"{}\" in {}'$'\\n\\n''{}'\n")
+            "git -C \"$BASE\" commit -m 'Solve \"{}\" in {}'$'\\n\\n''{}'\n")
                 .format(relative_dir, time, time, name, language_name, url))
