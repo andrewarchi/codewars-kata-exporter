@@ -29,19 +29,19 @@ for i, kata in enumerate(katas):
     difficulty = kata.difficulty()
     solutions = zip(kata.language_ids(), kata.language_names(), kata.source_codes(), kata.times())
 
-    for language_id, language_name, source_code, time in solutions:
-        file_dir = os.path.join(base_dir, difficulty, slug, language_id)
-        if not os.path.exists(file_dir):
-            os.makedirs(file_dir)
+    kata_dir = os.path.join(base_dir, difficulty, slug)
+    if not os.path.exists(kata_dir):
+        os.makedirs(kata_dir)
 
-        filename = 'solution' + file_extensions.get(language_id, '')
-        with open(os.path.join(file_dir, filename), 'w') as fout:
+    with open(os.path.join(kata_dir, 'README.md'), 'w') as fout:
+        fout.write(description)
+
+    for language_id, language_name, source_code, time in solutions:
+        filename = 'solution-{}{}'.format(language_id, file_extensions.get(language_id, ''))
+        with open(os.path.join(kata_dir, filename), 'w') as fout:
             fout.write(source_code)
 
-        with open(os.path.join(file_dir, 'README.md'), 'w') as fout:
-            fout.write(description)
-
-        relative_dir = os.path.join(difficulty, slug, language_id)
+        relative_dir = os.path.join(difficulty, slug)
         language_url = url + "/" + language_id
         commits.append((time, name, language_name, language_url, relative_dir))
 print()

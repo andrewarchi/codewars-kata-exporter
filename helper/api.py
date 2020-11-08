@@ -10,4 +10,4 @@ class CodeWarsAPI:
         endpoint = 'https://www.codewars.com/api/v1/code-challenges/{}'.format(kata_id)
         res = requests.get(endpoint, params={'Authorization': self.token})
         data = json.loads(res.text)
-        return data['name'], data['slug'], data['url'], data['description']
+        return data['name'].strip(), data['slug'], data['url'], data['description']
