@@ -43,18 +43,19 @@ for i, kata in enumerate(katas):
 
         relative_dir = os.path.join(difficulty, slug)
         language_url = url + "/" + language_id
-        commits.append((time, name, language_name, language_url, relative_dir))
+        commits.append((time, name, language_name, language_url, relative_dir, filename))
 print()
 
 with open('./git_commit.bash', 'w') as fout:
     fout.write('#!/bin/sh\n\n')
     fout.write('BASE={}\n\n'.format(base_dir))
     commits.sort(key=lambda tup: tup[0])
-    for time, name, language_name, url, relative_dir in commits:
+    for time, name, language_name, url, relative_dir, filename in commits:
         if tz_name != '':
             utc = datetime.strptime(time, '%Y-%m-%dT%H:%M:%S.%f%z')
             time = utc.astimezone(timezone(tz_name)).strftime('%Y-%m-%dT%H:%M:%S%z')
-        fout.write(("git -C \"$BASE\" add '{}' && " +
+        fout.write(("git -C \"$BASE\"'{}{}' add '{}' README.md && " +
             "GIT_AUTHOR_DATE='{}' GIT_COMMITTER_DATE='{}' " +
             "git -C \"$BASE\" commit -m 'Solve \"{}\" in {}'$'\\n\\n''{}'\n")
-                .format(relative_dir, time, time, name, language_name, url))
+                .format(os.sep, relative_dir, filename,
+                    time, time, name, language_name, url))
